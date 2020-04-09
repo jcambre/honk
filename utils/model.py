@@ -307,7 +307,7 @@ class SpeechDataset(data.Dataset):
         config["slimming_lambda"] = 0.
         config["prune_pct"] = 0.
         config["wanted_words"] = ["command", "random"]
-        config["data_folder"] = ["/data/speech_dataset"]
+        config["data_folder"] = ["./training_data"]
         config["pos_key_size"] = 1000
         return config
 
