@@ -148,7 +148,10 @@ def train(config):
                 labels = Variable(labels, requires_grad=False)
                 loss = criterion(scores, labels)
                 accs.append(print_eval("dev", scores, labels, loss))
-            avg_acc = np.mean(accs)
+            if not config["no_cuda"]:
+                avg_acc = torch.mean(accs)
+            else:
+                avg_acc = np.mean(accs)
             print("final dev accuracy: {}".format(avg_acc))
             if avg_acc > max_acc:
                 print("saving best model...")
