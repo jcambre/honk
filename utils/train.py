@@ -149,7 +149,7 @@ def train(config):
                 loss = criterion(scores, labels)
                 accs.append(print_eval("dev", scores, labels, loss))
             if not config["no_cuda"]:
-                avg_acc = torch.mean(accs)
+                avg_acc = np.mean([tensor.cpu() for tensor in accs])
             else:
                 avg_acc = np.mean(accs)
             print("final dev accuracy: {}".format(avg_acc))
